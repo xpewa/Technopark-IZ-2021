@@ -15,11 +15,10 @@ install:
   - sudo apt install clang-format
   - sudo apt install clang-tidy
   - sudo apt install cppcheck
-  - sudo apt install gcovr
+  - sudo pip install codecov
 script:
   - cmake CMakeLists.txt
   - make
-  - gcovr -r .. --html -o coverage.html
-artifacts:
-  paths:
-  - coverage.html
+  - gcov books.c
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
