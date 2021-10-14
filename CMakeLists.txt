@@ -14,6 +14,7 @@ add_library(books STATIC books.c)
 add_executable(main main.c)
 target_link_libraries(main books)
 
+add_compile_options("-coverage")
 enable_testing()
 find_package(GTest REQUIRED)
 
