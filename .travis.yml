@@ -15,6 +15,7 @@ install:
   - sudo apt install clang-format
   - sudo apt install clang-tidy
   - sudo apt install cppcheck
+  - sudo apt install gcovr
 script:
   - cmake CMakeLists.txt
   - make
