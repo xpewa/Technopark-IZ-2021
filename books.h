@@ -9,6 +9,9 @@
 #define ERROR_MEMORY -1
 #define SUCCESS 1
 
+#define COUNT_PARAMETERS_OF_BOOK 5
+#define COUNT_PARAMETERS_OF_READER 4
+
 typedef struct t_reader {
     int date[DATE_LENGTH];
     char surname[SURNAME_LENGTH];

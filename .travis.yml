@@ -15,11 +15,6 @@ install:
   - sudo apt install clang-format
   - sudo apt install clang-tidy
   - sudo apt install cppcheck
-  - sudo pip install codecov
 script:
   - cmake CMakeLists.txt
   - make
-  - ./books
-  - gcov books.c
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
