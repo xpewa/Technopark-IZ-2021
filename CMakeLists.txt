@@ -8,12 +8,12 @@ set(CMAKE_C_CPPCHECK "cppcheck")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=undefined")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=thread")
 
+
 add_library(books STATIC books.c)
 
 add_executable(main main.c)
 target_link_libraries(main books)
 
-add_compile_options("--coverage")
 enable_testing()
 find_package(GTest REQUIRED)
 

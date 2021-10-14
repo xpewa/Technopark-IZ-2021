@@ -13,7 +13,7 @@ int count_readers(t_library* library) {
 }
 
 t_book* books_on_hands(t_library* library) {
-    if (library->book_head == NULL) {
+    if (library->book_head == NULL || count_readers(library) == 0) {
         return NULL;
     }
     t_book* res = (t_book*)calloc(count_readers(library), sizeof(t_book));
