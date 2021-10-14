@@ -1,4 +1,4 @@
 Алина Сафарова из группы ML-11.<br>
-[![Build Status](https://app.travis-ci.com/xpewa/Technopark2021-IZ.svg?token=fhfPvQLzaDCgfyy1FsxQ&branch=IZ-1)](https://app.travis-ci.com/xpewa/Technopark2021-IZ)
+[![Build Status](https://app.travis-ci.com/xpewa/Technopark-IZ-2021.svg?branch=IZ-1)](https://app.travis-ci.com/xpewa/Technopark-IZ-2021)
 <br>Вариант #11<br>
 Создать структуру для хранения единиц библиотечного каталога: международного кода ISBN, названия книги, года ее издания, количества экземпляров, а также дат и фамилий взявших книгу читателей. Составить с ее использованием программу вывода информации о том, какое количество и каких книг находится на руках.
