@@ -1,10 +1,10 @@
-#include "../include/lib_static.h"
+#include "lib_static.h"
 #include <stdlib.h>
 
-static uint32_t findPeakInRange(const int* array, const uint32_t size, const uint32_t begin, const uint32_t end) {
+static size_t findPeakInRange(const int* array, const size_t  size, const size_t  begin, const size_t  end) {
   int max = 0;
-  uint32_t max_index = 0;
-  for (uint32_t i = begin + 1;  i + 1 < end; ++i) {
+  size_t  max_index = 0;
+  for (size_t  i = begin + 1;  i + 1 < end; ++i) {
     if (abs(array[i]) > abs(array[i-1]) && abs(array[i]) > abs(array[i+1])) {
       if (abs(array[i]) > max) {
         max = abs(array[i]);
@@ -32,18 +32,25 @@ static uint32_t findPeakInRange(const int* array, const uint32_t size, const uin
     }
   }
 
+  if (end != size) {
+    if (abs(array[end - 1]) > abs(array[end - 2]) && abs(array[end - 1]) > abs(array[end])) {
+      if (abs(array[end - 1]) >  max)
+        return end - 1;
+    }
+  }
+
   return max == 0 ? -1 : max_index;
 }
 
-uint32_t countRPeaks(const int* records, const uint32_t size, const uint16_t R_window) {
+size_t countRPeaks(const int* records, const size_t size, const size_t R_window) {
   if (records == NULL || size == 0) {
     return 0;
   }
-  uint32_t count = 0;
-  uint32_t start_interval = 0;
+  size_t  count = 0;
+  size_t  start_interval = 0;
   while (start_interval < size) {
-    uint32_t end_interval = start_interval + R_window < size ? start_interval + R_window : size;
-    uint32_t peak = findPeakInRange(records, size, start_interval, end_interval);
+    size_t  end_interval = start_interval + R_window < size ? start_interval + R_window : size;
+    size_t  peak = findPeakInRange(records, size, start_interval, end_interval);
     if (peak != -1) {
       start_interval = peak + R_window + 1;
       ++count;
