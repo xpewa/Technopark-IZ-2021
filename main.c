@@ -9,7 +9,9 @@ int main(void) {
   printf("Enter count of records: \n");
   scanf("%" SCNu32, &count_records);
 
-  int* records = (int*) malloc(count_records * sizeof(int));
+  int* records = NULL;
+  if (count_records > 0)
+    records = (int*) malloc(count_records * sizeof(int));
 
   printf("Enter ECG records: \n");
   for (int i = 0; i < count_records; ++i)
