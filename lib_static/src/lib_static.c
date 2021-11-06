@@ -1,62 +1,30 @@
 #include "lib_static.h"
 #include <stdlib.h>
 
-static size_t findPeakInRange(const int* array, const size_t  size, const size_t  begin, const size_t  end) {
-  int max = 0;
-  size_t  max_index = 0;
-  for (size_t  i = begin + 1;  i + 1 < end; ++i) {
-    if (abs(array[i]) > abs(array[i-1]) && abs(array[i]) > abs(array[i+1])) {
-      if (abs(array[i]) > max) {
-        max = abs(array[i]);
-        max_index = i;
-      }
-    }
-  }
-  if (begin == 0 && abs(array[0]) > abs(array[1])) {
-    if (abs(array[0]) > max)
-      return 0;
-  }
-
-  if (begin != 0) {
-    if (abs(array[begin]) > abs(array[begin + 1]) &&
-        abs(array[begin]) > abs(array[begin - 1])) {
-      if (abs(array[begin]) > max)
-        return begin;
-    }
-  }
-
-  if (end == size) {
-    if (abs(array[size - 1]) > abs(array[size - 2])) {
-      if (abs(array[size - 1]) >  max)
-        return size - 1;
-    }
-  }
-
-  if (end != size) {
-    if (abs(array[end - 1]) > abs(array[end - 2]) && abs(array[end - 1]) > abs(array[end])) {
-      if (abs(array[end - 1]) >  max)
-        return end - 1;
-    }
-  }
-
-  return max == 0 ? -1 : max_index;
-}
-
 size_t countRPeaks(const int* records, const size_t size, const size_t R_window) {
   if (records == NULL || size == 0) {
     return 0;
   }
   size_t  count = 0;
-  size_t  start_interval = 0;
-  while (start_interval < size) {
-    size_t  end_interval = start_interval + R_window < size ? start_interval + R_window : size;
-    size_t  peak = findPeakInRange(records, size, start_interval, end_interval);
-    if (peak != -1) {
-      start_interval = peak + R_window + 1;
-      ++count;
+  size_t  i = 1;
+  if (abs(records[0]) > abs(records[1])) {
+    ++count;
+    i = R_window + 1;
+  }
+  while (i < size) {
+    if (i == size - 1) {
+      if (abs(records[i]) > abs(records[i-1])) {
+        ++count;
+        break;
+      }
     }
-    else
-      start_interval = end_interval;
+    if (abs(records[i]) > abs(records[i-1]) && abs(records[i]) > abs(records[i+1])) {
+        ++count;
+        i += R_window + 1;
+    }
+    else {
+      ++i;
+    }
   }
   return count;
 }
