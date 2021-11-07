@@ -1,12 +1,12 @@
-#include "lib_static.h"
+#include "lib.h"
 #include <stdlib.h>
 
 size_t countRPeaks(const int* records, const size_t size, const size_t R_window) {
   if (records == NULL || size == 0) {
     return 0;
   }
-  size_t  count = 0;
-  size_t  i = 1;
+  size_t count = 0;
+  size_t i = 1;
   if (abs(records[0]) > abs(records[1])) {
     ++count;
     i = R_window + 1;

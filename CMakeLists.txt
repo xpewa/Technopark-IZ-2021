@@ -3,13 +3,13 @@ project(IZ-2)
 
 add_compile_options(-Wall -Werror -Wpedantic)
 
-option(WITH_COVERAGE "Add coverage" ON)
+option(WITH_COVERAGE "Add coverage")
 if(WITH_COVERAGE)
     add_compile_options(--coverage)
     add_link_options(--coverage)
 endif()
 
-option(WITH_SANITIZERS "Add address sanitizers" ON)
+option(WITH_SANITIZERS "Add address sanitizers")
 if(WITH_SANITIZERS)
     add_compile_options(-fno-omit-frame-pointer -fsanitize=address)
     add_link_options(-fsanitize=address)
@@ -22,7 +22,14 @@ if (WITH_TESTS OR WITH_COVERAGE OR WITH_SANITIZERS)
     set(BUILD_TESTS ON)
 endif()
 
-add_subdirectory(lib_static)
+add_subdirectory(lib/lib_shared)
+add_subdirectory(lib/lib_static)
 
 add_executable(main main.c)
-target_link_libraries(main lib_static)
+
+option(WITH_PARALLEL "Using shared library" ON)
+if(WITH_PARALLEL)
+    target_link_libraries(main lib_shared)
+else()
+    target_link_libraries(main lib_static)
+endif()

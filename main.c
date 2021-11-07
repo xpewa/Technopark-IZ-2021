@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <malloc.h>
-#include "lib_static.h"
+#include "lib.h"
 
 int main(void) {
   size_t count_records = 0;
