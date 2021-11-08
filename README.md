@@ -6,4 +6,4 @@
 и между соседними R-пиками должно пройти как минимум R_window отсчётов (например, R_window = 115), 
 а затем распараллельте его на несколько процессов с учётом оптимизации работы с кэш-памятью.
 <hr>
-[![Build Status](https://app.travis-ci.com/xpewa/Technopark-IZ-2021.svg?branch=IZ-2)](https://app.travis-ci.com/xpewa/Technopark-IZ-2021)
+[!][Build Status](https://app.travis-ci.com/xpewa/Technopark-IZ-2021.svg?branch=IZ-2)](https://app.travis-ci.com/xpewa/Technopark-IZ-2021)
