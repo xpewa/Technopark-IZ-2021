@@ -3,13 +3,13 @@ project(IZ-2)
 
 add_compile_options(-Wall -Werror -Wpedantic)
 
-option(WITH_COVERAGE "Add coverage")
+option(WITH_COVERAGE "Add coverage" ON)
 if(WITH_COVERAGE)
     add_compile_options(--coverage)
     add_link_options(--coverage)
 endif()
 
-option(WITH_SANITIZERS "Add address sanitizers")
+option(WITH_SANITIZERS "Add address sanitizers" ON)
 if(WITH_SANITIZERS)
     add_compile_options(-fno-omit-frame-pointer -fsanitize=address)
     add_link_options(-fsanitize=address)
@@ -24,6 +24,7 @@ endif()
 
 add_subdirectory(lib/lib_shared)
 add_subdirectory(lib/lib_static)
+add_subdirectory(tests)
 
 add_executable(main main.c)
 

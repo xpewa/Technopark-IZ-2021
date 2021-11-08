@@ -7,8 +7,6 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-#include <stdio.h>
-
 void static findLocalMax(const int* records, size_t size, size_t* shared_memory,
                          size_t size_column, size_t process_number, size_t count_processes) {
   size_t part_begin = process_number == 0 ? 1 : (size / count_processes) * process_number;
@@ -58,7 +56,6 @@ size_t countRPeaks(const int* records, size_t size, size_t R_window) {
   size_t* shared_memory = mmap(NULL, size_column * count_processes * sizeof(size_t),
                             PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANON, -1, 0);
   if (shared_memory == MAP_FAILED) {
-    printf("MAP FAILED\n");
     return 0;
   }
 
