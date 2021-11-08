@@ -8,3 +8,4 @@
 <hr> 
 
 [![Build Status](https://app.travis-ci.com/xpewa/Technopark-IZ-2021.svg?branch=IZ-2)](https://app.travis-ci.com/xpewa/Technopark-IZ-2021)
+[![codecov](https://codecov.io/gh/xpewa/Technopark-IZ-2021/branch/IZ-2/graph/badge.svg?token=lMFZ2MinOf)](https://codecov.io/gh/xpewa/Technopark-IZ-2021)

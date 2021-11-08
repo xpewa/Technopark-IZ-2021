@@ -23,10 +23,9 @@ jobs:
         - make -C build all test
         - curl -Os https://uploader.codecov.io/latest/linux/codecov
         - chmod +x codecov
+        - ./codecov -f  <(gcovr -e '.*/tests/.*' -x)
     - stage: Sanitaize
       script:
         - cmake -B build -DCMAKE_BUILD_TYPE=Debug -DWITH_SANITIZERS=1
         - make -C build
         - cd build && ctest --output-on-failure
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
